@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import React from "react";
 
 export default function App() {
-  const [count, setCount] = useState(0);
-  useEffect(() => console.log(count), [count]);
-
+  const [user, setUser] = useState("");
+  const handler = (e) => {
+    setUser(e.target.value);
+  };
   return (
     <div>
       <center>
-        <button onClick={() => setCount(count + 1)}>Change</button>
-        <h1>you clicked {count} times</h1>
+        <input
+          type="text"
+          placeholder="Username"
+          value={user}
+          name="user"
+          onChange={handler}
+        />
+        <br />
+        {user}
       </center>
     </div>
   );
