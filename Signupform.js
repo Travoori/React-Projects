@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 export default function Signupform() {
   const [data, setData] = useState({
     username: "",
@@ -21,7 +21,12 @@ export default function Signupform() {
     } else if (password !== confirmPassword) {
       alert("not matching password");
     } else {
-      console.log(data);
+      axios
+        .post(
+          "https://react-f4ab0-default-rtdb.firebaseio.com/register.json",
+          data
+        )
+        .then(() => alert("Submitted successfully"));
     }
   };
 
